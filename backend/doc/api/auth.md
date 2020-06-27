@@ -7,8 +7,8 @@
 ___request:___
 ```
 {
-    "email": String
-    "password": String
+	"email": String
+	"password": String
 }
 ```
 ___response:___
@@ -24,7 +24,7 @@ __Error:__
 ___request:___
 ```
 {
-    "key": String
+	"key": String
 }
 ```
 ___response:___
@@ -33,8 +33,8 @@ __OK:__
 
 ```
 {
-    "accessToken": String
-    "refrashToken": String
+	"accessToken": String
+	"refrashToken": String
 }
 ```
 __Error:__
@@ -49,8 +49,8 @@ __Error:__
 ___request:___
 ```
 {
-    "email": String
-    "password": String
+	"email": String
+	"password": String
 }
 ```
 ___response:___
@@ -58,8 +58,8 @@ __OK:__
 200 - Все прошло гладко
 ```
 {
-    "accessToken": String
-    "refrashToken": String
+	"accessToken": String
+	"refrashToken": String
 }
 ```
 __Error:__
@@ -74,7 +74,7 @@ __Error:__
 ___response:___
 ```
 {
-    "email": String
+	"email": String
 }
 ```
 ___responce:___
@@ -89,8 +89,8 @@ __Error:__:
 ___request:___
 ```
 {
-    "key": String
-    "password": String
+	"key": String
+	"password": String
 }
 ```
 ___response:___
@@ -98,8 +98,8 @@ __OK:__
 200 - Все прошло гладко
 ```
 {
-    "accessToken": String
-    "refrashToken": String
+	"accessToken": String
+	"refrashToken": String
 }
 ```
 __Error:__
@@ -114,7 +114,7 @@ __Error:__
 ___request:___
 ```
 {
-    "refrashToken": String
+	"refrashToken": String
 }
 ```
 ___response:___
@@ -122,8 +122,8 @@ __OK:__
 200 - Все прошло гладко
 ```
 {
-    "accessToken": String
-    "refrashToken": String
+	"accessToken": String
+	"refrashToken": String
 }
 ```
 __Error:__
@@ -138,7 +138,7 @@ __Error:__
 ___request:___
 ```
 {
-    "refrashToken": String
+	"refrashToken": String
 }
 ```
 ___response:___

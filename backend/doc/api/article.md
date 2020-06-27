@@ -6,14 +6,14 @@
 ___response:___
 __OK:__
 200 - Все прошло гладко
-```json
+```
 {
     "sections" : [
     	{
-            "uuid": String,
-    		"name": String,
-    		"background": String,
-    		"description": String
+			"uuid": String,
+			"name": String,
+			"background": String,
+			"description": String
     	},
         ...
     ]
@@ -26,7 +26,7 @@ __Error:__
 ___response:___
 __OK:__
 200 - Все прошло гладко
-```json
+```
 {
 	"themes": [
 		{
@@ -36,13 +36,13 @@ __OK:__
 				{
 					"id": Integer,
 					"name": String,
-                    "auth": String,
-                    "idAuth": String,
-                },
-                ...
-            ]
-      	},
-        ...
+					"auth": String,
+					"idAuth": String,
+				},
+				...
+			]
+		},
+		...
 	]
 }
 ```
@@ -59,19 +59,19 @@ __Error:__
 __OK:__
 200 - Все прошло гладко
 
-```json
+```
 {
 	"uuid": String,
-    "name": String,
-    "atricles":[
-        {
-            "id": Integer,
-            "name": String,
-            "auth": String,
-            "idAuth": String,
-        },
-        ...
-    ]
+	"name": String,
+	"atricles":[
+		{
+			"id": Integer,
+			"name": String,
+			"auth": String,
+			"idAuth": String,
+		},
+		...
+	]
 }
 ```
 __Error:__
@@ -86,12 +86,12 @@ __Error:__
 __OK:__
 200 - Все прошло гладко
 
-```json
+```
 {
-    "id": Integer,
-    "text": String,
-    "auth": String,
-    "idAuth": String,
+	"id": Integer,
+	"text": String,
+	"auth": String,
+	"idAuth": String,
 }
 ```
 __Error:__
@@ -100,11 +100,11 @@ __Error:__
 ---
 #####  __POST__ : /article/article
 ___request:___
-```json
+```
 {
 	"accessToken": String,
-    "text": String,
-    "id": Integer 	/* ID черновика */
+	"text": String,
+	"id": Integer 	/* ID черновика */
 }
 ```
 ___response:___
@@ -117,11 +117,11 @@ __Error:__
 ---
 #####  __PUT__ : /article/article
 ___request:___
-```json
+```
 {
 	"accessToken": String,
 	"uuid": String,			/* Идентификатор статьи */
-    "text": String
+	"text": String
 }
 ```
 ___response:___
@@ -134,7 +134,7 @@ __Error:__
 ---
 #####  __DELETE__ : /article/article
 ___request:___
-```json
+```
 {
 	"accessToken": String,
 	"uuid": String
@@ -158,12 +158,12 @@ ___response:___
 __OK:__
 200 - Все прошло гладко
 
-```json
+```
 {
 	"drafts": [
 		{
 			"name": String,
-            "id": Integer
+			"id": Integer
 		},
 	],
 }
@@ -178,9 +178,9 @@ ___response:___
 __OK:__
 200 - Все прошло гладко
 
-```json
+```
 {
-    "accessToken": String,
+	"accessToken": String,
 	"text": String
 }
 ```
@@ -193,7 +193,6 @@ ___request:___
 ```json
 {
 	"accessToken": String,
-    
 }
 ```
 ___response:___
@@ -205,7 +204,7 @@ __Error:__
 ---
 ##### PUT: /article/draft
 ___request:___
-```json
+```
 {
     "accessToken": String,
     "id": Integer,
@@ -221,9 +220,9 @@ __Error:__
 ---
 ##### DELETE: /article/draft
 ___request:___
-```json
+```
 {
-    "accessToken": String,
+	"accessToken": String,
 	"id": Integer
 }
 ```
