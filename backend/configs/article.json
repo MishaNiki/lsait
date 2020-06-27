@@ -1,0 +1,16 @@
+{
+    "bindAddr":":9092",
+    "logLevel":"debug",
+    "secretKey": "secretKey",
+
+    "storage": {
+        "pg-user":"postgres",
+        "pg-password": "postgres",
+        "pg-dbname": "lsait",
+        "pg-sslmode":"disable",
+
+        "r-addr": "localhost:6379",
+        "r-password": "",
+        "r-db": 0
+    }
+}
