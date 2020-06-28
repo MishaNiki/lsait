@@ -1,236 +1,344 @@
 # API
+
 ## ARTICLE
+
 ### Section
 ---
 ##### __GET__ : /article/section
+
 ___response:___
+
 __OK:__
-200 - Все прошло гладко
+
+- 200 - Все прошло гладко
 ```
 {
-    "sections" : [
-    	{
-			"uuid": String,
-			"name": String,
-			"background": String,
-			"description": String
-    	},
-        ...
-    ]
+  "sections" : [
+    {
+      "uuid": String,
+      "title": String,
+	},
+    ...
+  ]
 }
 ```
+
 __Error:__
 
 ---
 ##### __GET__ : /article/section/{uuidSection}
+
 ___response:___
+
 __OK:__
-200 - Все прошло гладко
-```
-{
-	"themes": [
-		{
-			"uuid": String,
-			"name": String,
-			"atricles": [
-				{
-					"id": Integer,
-					"name": String,
-					"auth": String,
-					"idAuth": String,
-				},
-				...
-			]
-		},
-		...
-	]
-}
-```
-__Error:__
 
-404 - нет такого раздела
-
----
-### Theme
----
-##### __GET__ : /article/theme/{uuidTheme}
-
-##### ___response:___
-__OK:__
-200 - Все прошло гладко
+- 200 - Все прошло гладко
 
 ```
 {
-	"uuid": String,
-	"name": String,
-	"atricles":[
-		{
+  "section" : {
+    "uuid": String,
+    "title": String,
+    "themes": [
+	  {
+	    "title": String,
+		"atricles": [
+		  {
 			"id": Integer,
-			"name": String,
-			"auth": String,
-			"idAuth": String,
-		},
-		...
+			"title": String,
+			"description": String,
+			"date": String
+		  },
+		  ...
+		]
+	  },
+	  ...
 	]
+  }
 }
 ```
+
 __Error:__
-404 - нет такой темы
+
+- 404 - нет такого раздела
+
+---
+
+##### __GET__: /section/theme
+
+___response:___
+
+__OK:__
+
+- 200 - Все прошло гладко
+
+```
+{
+  "section" : {
+    "uuid": String,
+    "title": String,
+    "themes": [
+	  {
+	    "id": Integer,
+        "title": String,
+	  },
+	  ...
+	]
+  }
+}
+```
 
 ---
 ### Article
----
-#####  __GET__ : /article/article/{uuidArticle}
 
-#####  ___response:___
+> __Примечение:__ Для того чтобы выложить статью нужно выполнит следующию последовательность операций:
+>
+> 1. Запрос [POST]: /article/draft -  создаст черновик
+> 2. Запрос [GET]: /article/edit - предоставит айди черновика для редактирования
+> 3. Зарос [POST]: /article/article - переведёт черновик в состояние статьи
+
+---
+#####  __GET__ : /article/article/{id}
+
+___response:___
+
 __OK:__
-200 - Все прошло гладко
+
+- 200 - Все прошло гладко
+
+```
+{
+  "id": Integer,
+  "title": String,
+  "text": String,
+  "description": String,
+}
+```
+
+__Error:__
+
+- 404 - нет такой статьи
+
+---
+#####  __POST__ : /article/article
+
+___request:___
+
+___header:__ Token - access token 
+
+```
+{
+  "id": Integer, 	/* ID черновика */
+  "text": String,
+  "title": String,
+  "description": String,
+  "idTheme": Integer
+}
+```
+
+___response:___
+
+__OK:__
+
+- 200 - Все прошло гладко
+
+__Error:__
+
+- 400 - плохой запрос
+- 401 - неавторизован
+- 426 - access токен  протух
+
+---
+
+#####  __PUT__ : /article/article
+
+___request:___
+
+__header:__ Token - access token
 
 ```
 {
 	"id": Integer,
 	"text": String,
-	"auth": String,
-	"idAuth": String,
-}
-```
-__Error:__
-404 - нет такой статьи
-
----
-#####  __POST__ : /article/article
-___request:___
-```
-{
-	"accessToken": String,
-	"text": String,
-	"id": Integer 	/* ID черновика */
+	"title": String,
+	"description": String,
+	"idTheme": Integer
 }
 ```
 ___response:___
+
 __OK:__
-200 - Все прошло гладко
+
+- 200 - Все прошло гладко
+
 __Error:__
-400 - плохой запрос
-406 - access токен  протух
+
+- 400 - плохой запрос
+- 401 - неавторизован
+- 426 - access токен  протух
 
 ---
-#####  __PUT__ : /article/article
-___request:___
-```
-{
-	"accessToken": String,
-	"uuid": String,			/* Идентификатор статьи */
-	"text": String
-}
-```
-___response:___
-__OK:__
-200 - Все прошло гладко
-__Error:__
-400 - плохой запрос
-406 - access токен  протух
 
----
 #####  __DELETE__ : /article/article
+
 ___request:___
-```
-{
-	"accessToken": String,
-	"uuid": String
-}
-```
-___response:___
-__OK:__
-200 - Все прошло гладко
-__Error:__
-400 - плохой запрос
-406 - access токен  протух
 
----
-
-### Draft
-
----
-##### GET : /article/draft
-___request:___
-___response:___
-__OK:__
-200 - Все прошло гладко
+___header:___  Token - access token
 
 ```
 {
-	"drafts": [
-		{
-			"name": String,
-			"id": Integer
-		},
-	],
-}
-```
-__Error:__
-404 - нет такого черновика
-
----
-##### GET : /article/draft/{id}
-___request:___
-___response:___
-__OK:__
-200 - Все прошло гладко
-
-```
-{
-	"accessToken": String,
-	"text": String
-}
-```
-__Error:__
-404 - нет такого черновика
-
----
-##### POST: /article/draft
-___request:___
-```json
-{
-	"accessToken": String,
-}
-```
-___response:___
-__OK:__
-200 - Все прошло гладко
-__Error:__
-404 - нет такого черновика
-
----
-##### PUT: /article/draft
-___request:___
-```
-{
-    "accessToken": String,
-    "id": Integer,
-	"text": String
-}
-```
-___response:___
-__OK:__
-201 - Обновлено
-__Error:__
-404 - нет такого черновика
-
----
-##### DELETE: /article/draft
-___request:___
-```
-{
-	"accessToken": String,
 	"id": Integer
 }
 ```
 ___response:___
+
 __OK:__
-200 - Все прошло гладко
+
+- 200 - Все прошло гладко
+
 __Error:__
-400 - плохой запрос
-404 - нет такого черновика
+
+- 400 - плохой запрос
+- 401 - неавторизован
+- 426 - access токен  протух
 
 ---
+### Edit
+---
+
+#####  __GET__ : /article/edit/{id}
+
+___request:___
+
+___header:___  Token - access token
+
+___response:___
+
+__OK:__
+
+- 200 - Все прошло гладко
+
+```
+{
+  "id": Integer,
+  "text": String,
+  "title": String,
+  "date": String,
+  "description": String,
+  "idTheme": Integer
+}
+```
+
+__Error:__
+
+- 400 - плохой запрос
+- 401 - неавторизован
+- 426 - access токен  протух
+
+---
+
+### Draft
+---
+
+#####  __POST__ : /article/draft
+
+___request:___
+
+___header:___  Token - access token
+
+```
+{
+  "title": String,
+  "description": String
+}
+```
+
+___response:___
+
+__OK:__
+
+- 200 - Все прошло гладко
+
+__Error:__
+
+- 400 - плохой запрос
+- 401 - неавторизован
+- 426 - access токен  протух
+
+---
+### Profile
+---
+
+#####  __GET__ : /article/profile
+
+___request:___
+
+___header:___  Token - access token
+
+___response:___
+
+__OK:__
+
+- 200 - Все прошло гладко
+
+```
+{
+  "profile": {
+    "name": String,
+    "surname": String,
+    "description": String,
+    "position": String,
+    "drafts": [
+      {
+        "title": String,
+        "description": String,
+        "date": String
+      },
+      ...
+    ],
+    "articles": [
+      {
+        "title": String,
+        "description": String,
+        "date": String
+      },
+      ...
+    ]
+  }
+}
+```
+
+__Error:__
+
+- 400 - плохой запрос
+- 401 - неавторизован
+- 426 - access токен  протух
+
+---
+
+#####  __PUT__ : /article/profile
+
+___request:___
+
+___header:___  Token - access token
+
+```
+{
+  "name": String,
+  "surname": String,
+  "description": String,
+  "position": String
+}
+```
+
+___response:___
+
+__OK:__
+
+- 200 - Все прошло гладко
+
+__Error:__
+
+- 400 - плохой запрос
+- 401 - неавторизован
+- 426 - access токен  протух
