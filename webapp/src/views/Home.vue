@@ -64,9 +64,16 @@
 
       <v-dialog v-model="newDraftDial" max-width="600px">
         <v-card>
-          <v-card-title>Новая статья</v-card-title>
-          <v-card-subtitle>Будет созданно как черновик</v-card-subtitle>
+            <v-toolbar
+              flat
+              color="blue darken-1"
+              dark
+              >
+              <v-icon>mdi-file-document</v-icon>
+              <v-toolbar-title class="font-weight-bold">Новая статья</v-toolbar-title>
+          </v-toolbar>
           <v-card-text>
+            <p class="pt-2">Будет созданно как черновик</p>
             <v-text-field
               v-model=newArticle.title
               label="Название"
@@ -80,9 +87,9 @@
             />
           </v-card-text>
           <v-card-actions>
-            <v-btn text @click="newDraftDial = false">Закрыть</v-btn>
+            <v-btn class="mx-2" color="blue darken-1" dark @click="newDraftDial = false">Закрыть</v-btn>
             <v-spacer/>
-            <v-btn text @click="CreateArticle()">Создать</v-btn>
+            <v-btn class="mx-2" color="blue darken-1" dark @click="CreateArticle()">Создать</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
