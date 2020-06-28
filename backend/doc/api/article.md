@@ -17,13 +17,11 @@ __OK:__
     {
       "uuid": String,
       "title": String,
-	},
+    },
     ...
   ]
 }
 ```
-
-__Error:__
 
 ---
 #### __GET__ : /article/section/{uuidSection}
@@ -40,21 +38,19 @@ __OK:__
     "uuid": String,
     "title": String,
     "themes": [
-	  {
-	    "title": String,
-		"atricles": [
-		  {
-			"id": Integer,
-			"title": String,
-			"description": String,
-			"date": String
-		  },
-		  ...
-		]
-	  },
-	  ...
-	]
-  }
+       {
+          "title": String,
+	  "atricles": [
+	   {
+	     "id": Integer,
+             "title": String,
+             "description": String,
+             "date": String
+	   },
+	   ...
+	}
+     ]
+   }
 }
 ```
 
@@ -78,12 +74,12 @@ __OK:__
     "uuid": String,
     "title": String,
     "themes": [
-	  {
-	    "id": Integer,
+      {
+	      "id": Integer,
         "title": String,
-	  },
-	  ...
-	]
+	    },
+	    ...
+	  ]
   }
 }
 ```
@@ -95,7 +91,7 @@ __OK:__
 >
 > 1. Запрос [POST]: /article/draft -  создаст черновик
 > 2. Запрос [GET]: /article/edit - предоставит айди черновика для редактирования
-> 3. Зарос [POST]: /article/article - переведёт черновик в состояние статьи
+> 3. Запрос [POST]: /article/article - переведёт черновик в состояние статьи
 
 ---
 ####  __GET__ : /article/article/{id}
