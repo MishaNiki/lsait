@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <Controls toHome toRoot />
+    <Controls :toHome="auth" toRoot />
     <v-container fluid>
       <v-row justify="center">
         <v-col cols="12" md="8" sm="12" xs="12">
@@ -27,7 +27,7 @@ export default {
     Controls,
   },
 
-  computed: mapGetters(['viewArticle', 'Status']),
+  computed: mapGetters(['viewArticle', 'Status', 'auth']),
 
   created() {
    this.$store.dispatch('getViewArticle', this.$route.params.id)
