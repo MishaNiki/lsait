@@ -4,7 +4,7 @@
 
 ### Section
 ---
-##### __GET__ : /article/section
+#### __GET__ : /article/section
 
 ___response:___
 
@@ -17,16 +17,14 @@ __OK:__
     {
       "uuid": String,
       "title": String,
-	},
+    },
     ...
   ]
 }
 ```
 
-__Error:__
-
 ---
-##### __GET__ : /article/section/{uuidSection}
+#### __GET__ : /article/section/{uuidSection}
 
 ___response:___
 
@@ -40,21 +38,19 @@ __OK:__
     "uuid": String,
     "title": String,
     "themes": [
-	  {
-	    "title": String,
-		"atricles": [
-		  {
-			"id": Integer,
-			"title": String,
-			"description": String,
-			"date": String
-		  },
-		  ...
-		]
-	  },
-	  ...
-	]
-  }
+       {
+          "title": String,
+	  "atricles": [
+	   {
+	     "id": Integer,
+             "title": String,
+             "description": String,
+             "date": String
+	   },
+	   ...
+	}
+     ]
+   }
 }
 ```
 
@@ -64,7 +60,7 @@ __Error:__
 
 ---
 
-##### __GET__: /section/theme
+#### __GET__: /section/theme
 
 ___response:___
 
@@ -78,12 +74,12 @@ __OK:__
     "uuid": String,
     "title": String,
     "themes": [
-	  {
-	    "id": Integer,
+      {
+	      "id": Integer,
         "title": String,
-	  },
-	  ...
-	]
+	    },
+	    ...
+	  ]
   }
 }
 ```
@@ -95,10 +91,10 @@ __OK:__
 >
 > 1. Запрос [POST]: /article/draft -  создаст черновик
 > 2. Запрос [GET]: /article/edit - предоставит айди черновика для редактирования
-> 3. Зарос [POST]: /article/article - переведёт черновик в состояние статьи
+> 3. Запрос [POST]: /article/article - переведёт черновик в состояние статьи
 
 ---
-#####  __GET__ : /article/article/{id}
+####  __GET__ : /article/article/{id}
 
 ___response:___
 
@@ -120,7 +116,7 @@ __Error:__
 - 404 - нет такой статьи
 
 ---
-#####  __POST__ : /article/article
+####  __POST__ : /article/article
 
 ___request:___
 
@@ -150,7 +146,7 @@ __Error:__
 
 ---
 
-#####  __PUT__ : /article/article
+####  __PUT__ : /article/article
 
 ___request:___
 
@@ -179,7 +175,7 @@ __Error:__
 
 ---
 
-#####  __DELETE__ : /article/article
+####  __DELETE__ : /article/article
 
 ___request:___
 
@@ -206,7 +202,7 @@ __Error:__
 ### Edit
 ---
 
-#####  __GET__ : /article/edit/{id}
+####  __GET__ : /article/edit/{id}
 
 ___request:___
 
@@ -240,7 +236,7 @@ __Error:__
 ### Draft
 ---
 
-#####  __POST__ : /article/draft
+####  __POST__ : /article/draft
 
 ___request:___
 
@@ -269,7 +265,7 @@ __Error:__
 ### Profile
 ---
 
-#####  __GET__ : /article/profile
+####  __GET__ : /article/profile
 
 ___request:___
 
@@ -316,7 +312,7 @@ __Error:__
 
 ---
 
-#####  __PUT__ : /article/profile
+####  __PUT__ : /article/profile
 
 ___request:___
 
